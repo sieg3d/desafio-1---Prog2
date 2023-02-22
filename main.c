@@ -3,15 +3,13 @@
 #define c 27
 
 /* Grupo:
-Aluno 1:
-Aluno 2:
-Aluno 3:
-Aluno 4:
+Aluno 1: Douglas Lopes
+Aluno 2: Gabriel Assis
 */
 
 int main(void) {
   int i, j;
-  int teste[l][c];
+
   int janeiro[l][c] = {{40, 40, 36, 36, 40, 36, 36, 40, 40, 40, 40, 36, 36, 40,
                         40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40},
                        {40, 40, 40, 40, 36, 40, 40, 40, 40, 40, 40, 40, 40, 40,
@@ -161,7 +159,7 @@ int main(void) {
       {104, 108, 108, 109, 109, 109, 72, 40, 40, 40, 40, 40, 40, 40,
        40,  36,  36,  40,  40,  40,  72, 40, 40, 40, 40, 4,  40}};
 
-  int nivelDesmatamento = 50, variacaoDesmatFev=0, variacaoDesmatMar=0;
+  int nivelDesmatamento = 50, variacaoDesmatFev = 0, variacaoDesmatMar = 0;
   float qtdDesmatJan = 0, qtdDesmatFev = 0, qtdDesmatMar = 0;
   float mediaDesmatJan = 0, mediaDesmatFev = 0, mediaDesmatMar = 0;
 
@@ -173,7 +171,10 @@ int main(void) {
     }
   }
 
-  printf("A quantidade de unidades desmatadas em janeiro é: %.0f unidades",
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tarefa "
+         "1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+  printf("\n\nA quantidade de unidades desmatadas em janeiro é: %.0f unidades",
          qtdDesmatJan);
   mediaDesmatJan = (qtdDesmatJan / 648) * 100;
   printf("\nCom uma média percentual de desmatamento de %.2f%%",
@@ -184,7 +185,7 @@ int main(void) {
       if (fevereiro[i][j] > nivelDesmatamento) {
         qtdDesmatFev++;
       }
-      if(fevereiro[i][j]>janeiro[i][j]){
+      if (fevereiro[i][j] > janeiro[i][j]) {
         variacaoDesmatFev++;
       }
     }
@@ -195,26 +196,71 @@ int main(void) {
   mediaDesmatFev = (qtdDesmatFev / 648) * 100;
   printf("\nCom uma média percentual de desmatamento de %.2f%%",
          mediaDesmatFev);
-  printf("\nFevereito possui %d unidades mais desmatadas do que o mês anterior", variacaoDesmatFev);
+  printf("\nFevereito possui %d unidades mais desmatadas do que o mês anterior",
+         variacaoDesmatFev);
 
   for (i = 0; i < l; i++) {
     for (j = 0; j < c; j++) {
       if (marco[i][j] > nivelDesmatamento) {
         qtdDesmatMar++;
       }
-      if(marco[i][j]<fevereiro[i][j]){
+      if (marco[i][j] > fevereiro[i][j]) {
         variacaoDesmatMar++;
       }
     }
   }
-  printf("\n\nA quantidade de unidades desmatadas em março é: %.0f unidades", qtdDesmatMar);
+  printf("\n\nA quantidade de unidades desmatadas em março é: %.0f unidades",
+         qtdDesmatMar);
 
   mediaDesmatMar = (qtdDesmatMar / 648) * 100;
-  printf("\nCom uma média percentual de desmatamento de %.2f%%", mediaDesmatMar);
-   printf("\nMarço possui %d unidades mais desmatadas do que o mês anterior", variacaoDesmatMar);
+  printf("\nCom uma média percentual de desmatamento de %.2f%%",
+         mediaDesmatMar);
+  printf("\nMarço possui %d unidades mais desmatadas do que o mês anterior",
+         variacaoDesmatMar);
+
+  printf("\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tarefa "
+         "2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+
+  // ---------------------------------------------------
+
+  printf("\n\t\t\t\t\t\t\t\t!!!ATENÇÃO!!!\nO gráfico abaixo aponta as unidades "
+         "que tiveram desmatamento maior que 20%% em fevereiro em relação ao "
+         "mês de janeiro:");
+  for (i = 0; i < l; i++) {
+    printf("\n");
+    for (j = 0; j < c; j++) {
+      if (1.2 * janeiro[i][j] < fevereiro[i][j]) {
+        printf("*");
+      } else {
+        printf("_");
+      }
+    }
+  }
+
+  printf("\n\n\t\t\t\t\t\t\t\t!!!ATENÇÃO!!!\nO gráfico abaixo aponta as "
+         "unidades que tiveram desmatamento maior que 20%% em março em relação "
+         "ao mês de fevereiro:");
+  for (i = 0; i < l; i++) {
+    printf("\n");
+    for (j = 0; j < c; j++) {
+      if (1.2 * fevereiro[i][j] < marco[i][j]) {
+        printf("*");
+      } else {
+        printf("_");
+      }
+    }
+  }
+
+
+  printf("\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tarefa 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+
+
+
 
 
 
   
   return 0;
 }
+
