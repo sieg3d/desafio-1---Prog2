@@ -159,7 +159,8 @@ int main(void) {
       {104, 108, 108, 109, 109, 109, 72, 40, 40, 40, 40, 40, 40, 40,
        40,  36,  36,  40,  40,  40,  72, 40, 40, 40, 40, 4,  40}};
 
-  int nivelDesmatamento = 50, variacaoDesmatFev = 0, variacaoDesmatMar = 0;
+  int nivelDesmatamento = 50, variacaoDesmatFev = 0, variacaoDesmatMar = 0,
+      A = 0, B = 0, C = 0, linha[c], estrada = 0, maiorEstrada = 0;
   float qtdDesmatJan = 0, qtdDesmatFev = 0, qtdDesmatMar = 0;
   float mediaDesmatJan = 0, mediaDesmatFev = 0, mediaDesmatMar = 0;
 
@@ -251,16 +252,32 @@ int main(void) {
     }
   }
 
+  printf("\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tarefa "
+         "3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-  printf("\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tarefa 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  for (int i = 0; i < l; i++) {
+    for (int j = 0; j < c; j++) {
+      if (marco[i][j] > 50) {
+        estrada++;
+        if (maiorEstrada < estrada) {
+          maiorEstrada = estrada;
+          C = i;
+          A = j;
+          B = A - (estrada - 1);
+        }
+      } else {
+        linha[j] = 0;
+        estrada = 0;
+      }
+    }
+    estrada = 0;
+  }
 
+  printf(
+      "\n\nA maior linha contígua tem início em [%d][%d] e final em [%d][%d]",
+      C, B, C, A);
 
+  return 0;
 
-
-
-
-
-  
   return 0;
 }
-
