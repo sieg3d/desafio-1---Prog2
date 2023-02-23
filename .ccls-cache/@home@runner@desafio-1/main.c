@@ -278,6 +278,4 @@ int main(void) {
       C, B, C, A);
 
   return 0;
-
-  return 0;
 }
