@@ -163,6 +163,16 @@ int main(void) {
       A = 0, B = 0, C = 0, linha[c], estrada = 0, maiorEstrada = 0;
   float qtdDesmatJan = 0, qtdDesmatFev = 0, qtdDesmatMar = 0;
   float mediaDesmatJan = 0, mediaDesmatFev = 0, mediaDesmatMar = 0;
+  int h,k;
+
+int M[l][c];
+  int sup=0;
+  int esq=0;
+  int dir=0;
+  int inf=0;
+  int area=0;
+  int areaMaxima=0;
+  int o;
 
   for (i = 0; i < l; i++) {
     for (j = 0; j < c; j++) {
@@ -277,5 +287,141 @@ int main(void) {
       "\n\nA maior linha contígua tem início em [%d][%d] e final em [%d][%d]",
       C, B, C, A);
 
+
+
+  printf("\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Tarefa "
+         "Adicional~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  for(i=0;i<l;i++){
+ for(j=0;j<c;j++){
+ if(janeiro[i][j]>=50){
+  M[i][j] = 1;
+}
+else{
+ M[i][j] = 0;
+   }   
+    }
+ }
+
+  int larg = c,alt=l;
+ for(i=0;i<l;i++){
+for(j=0;j<c;j++){
+   if(M[i][j] == 1){
+ if(M[i+1][j]==1 && M[i+1][j+1]==1 && M[i][j+1]==1){
+  h=j;
+
+while(M[i][h]==1){
+  h++;
+ }
+  larg = h-1;
+ area = (h-j+1);
+
+if(areaMaxima == 0){
+   areaMaxima = area;
+ sup = i;
+ inf = i;
+ dir = h;
+ esq = j;
+}else if(area>areaMaxima){
+areaMaxima = area;
+sup = i;
+inf = i;
+dir = h;
+esq = j;
+}
+                                
+for(k=i;k<alt;k++){
+for(o=j;o<larg;o++){
+if(M[k][o]==0){
+larg=o;
+}
+area = (k-i+1)*(o-j+1);
+if(area>areaMaxima){
+areaMaxima = area;
+sup = i;
+inf = k;
+dir = o;
+esq = j;
+ }
+
+}
+
+}
+}else if(M[i+1][j]==1){
+h=i;
+
+while(M[h][j]==1){
+h++;
+}
+alt = h-1;
+area = (h-i+1);
+
+if(areaMaxima == 0){
+areaMaxima = area;
+sup = i;
+inf = i;
+dir = h;
+esq = j;
+}else if(area>areaMaxima){
+areaMaxima = area;
+sup = i;
+inf = i;
+dir = h;
+esq = j;
+}
+                                    
+for(k=i;k<alt;k++){
+for(o=j;o<larg;o++){
+if(M[k][o]==0){
+larg=o;
+}
+area = (k-i+1)*(o-j+1);
+if(area>areaMaxima){
+areaMaxima = area;
+sup = i;
+inf = k;
+dir = o;
+esq = j;
+}
+
+}
+
+}
+}else if(M[i][j+1]==1){
+h=j;
+
+while(M[i][h]==1){
+h++;
+}
+larg = h-1;
+area = (h-j+1);
+if(areaMaxima == 0){
+areaMaxima = area;
+sup = i;
+inf = i;
+dir = h;
+esq = j;
+}else if(area>areaMaxima){
+areaMaxima = area;
+sup = i;
+inf = i;
+dir = h;
+esq = j;
+}
+}else{
+areaMaxima = 1;
+sup=i;
+inf=i;
+dir=j;
+esq=j;
+}
+
+}
+}   
+}
+
+printf("\n\n\nMatriz de tamanho %dx%d,comecando na posicao[%d][%d] da matriz principal de Janeiro",(inf-sup+1),(dir-esq+1),sup,esq);
+   
+
+  
   return 0;
 }
